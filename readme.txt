@@ -1,2 +1,3 @@
-﻿基于嵌入式手势识别系统的学习
+﻿编译指令：arm-linux-gcc main.c ts.c showbmp.c camera.c login.c -o main -I./Lib -L./Lib -lyuvcamera -ljpeg -pthread
+基于嵌入式手势识别系统的学习
 学习ing......
