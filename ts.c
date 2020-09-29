@@ -110,12 +110,3 @@ int get_directory(void)
 			return DOWN;
 	}
 }
-
-
- 
- 
- 
-
-
- 
- 

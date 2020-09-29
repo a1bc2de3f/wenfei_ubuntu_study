@@ -1,11 +1,11 @@
 #include "camera.h"
 
-pthread_t id;
+pthread_t id;//线程id
 int flag=1;
 
-void *monitor(void *arg)
+void *monitor(void *arg)	//线程用来获取点击坐标
 {
-	while(flag)
+	while(flag)	
 	{
 		get_x_y(&ts_x,&ts_y);
 	}	
@@ -16,19 +16,19 @@ int fc_camera(void)
 {
 	flag=1;
 	camera_t *mycamera=malloc(sizeof(camera_t));
-	showbmp("/wenfei/images/cameraui.bmp");
+	showbmp("/wenfei/images/cameraui.bmp");	//显示监控主界面
 	pthread_create(&id,NULL,monitor,NULL);	
 	//初始化摄像头
 	yuvcamera_init(mycamera,"/dev/video7");
-	char rgbdata[mycamera->width*mycamera->height*3];
+	char rgbdata[mycamera->width*mycamera->height*3];	//摄像头采集画面数据
 	while(1)
 	{
 		if(ts_x>0 && ts_x<80 && ts_y>0 && ts_y<480)//实时监控
 		{
-		//获取摄像头采集到RGB数据
-		yuvcamera_getrgb(mycamera,rgbdata);
-		//将获取到RGB数据填充开发板的lcd
-		yuvcamera_show(mycamera,p_mmap,rgbdata);
+			//获取摄像头采集到RGB数据
+			yuvcamera_getrgb(mycamera,rgbdata);
+			//将获取到RGB数据填充开发板的lcd
+			yuvcamera_show(mycamera,p_mmap,rgbdata);
 		}
 		
 		if(ts_x>720 && ts_x<800 && ts_y>0 && ts_y<480)//退出监控

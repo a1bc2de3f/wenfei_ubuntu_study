@@ -21,3 +21,4 @@ int pic_right(char *pathname);
 
 
 #endif
+

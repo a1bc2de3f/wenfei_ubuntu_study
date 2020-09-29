@@ -200,13 +200,3 @@ int pic_right(char *pathname)
 		
 	return 0;
 }
-
-
-
-
- 
- 
-
-
- 
- 
